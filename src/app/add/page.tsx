@@ -57,7 +57,8 @@ function AddPage() {
                         </label>
                         <input
                             name={name}
-                            value={(user as any)[name]}
+                            
+                            value={user[name as keyof IUsers] as string}
                             onChange={handleChange}
                             className="outline-none text-sm px-2 border py-1 rounded border-gray-300"
                             type="text"
