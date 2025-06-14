@@ -43,14 +43,14 @@ function AddPage() {
                 <hr className="text-gray-300 mb-4" />
 
                 {[
-                    { label: 'Phone Number', name: 'phoneNumber',require:true },
-                    { label: 'Email', name: 'email', require:false },
-                    { label: 'Company Email', name: 'companyEmail',require:false },
-                    { label: 'Office Email', name: 'officeEmail',require:false },
-                    { label: 'CIN/PAN/GST', name: 'cinPanGst', require:false },
-                    { label: 'Remarks', name: 'remarks', require:false },
-                    { label: 'Password', name: 'password',require:true },
-                ].map(({ label, name,require }) => (
+                    { label: 'Phone Number', name: 'phoneNumber',require:true , type:"number" },
+                    { label: 'Email', name: 'email', require:false, type:"email" },
+                    { label: 'Company Email', name: 'companyEmail',require:false, type:"email" },
+                    { label: 'Office Email', name: 'officeEmail',require:false, type:"email" },
+                    { label: 'CIN/PAN/GST', name: 'cinPanGst', require:false , type:'text'},
+                    { label: 'Remarks', name: 'remarks', require:false, type:"text" },
+                    { label: 'Password', name: 'password',require:true , type:"password" },
+                ].map(({ label, name,require,type }) => (
                     <div key={name} className="flex flex-col mb-2">
                         <label className="text-sm pl-1 font-semibold">
                             {label} {require&&<span className="text-red-500">*</span>}
@@ -61,7 +61,7 @@ function AddPage() {
                             value={user[name as keyof IUsers] as string}
                             onChange={handleChange}
                             className="outline-none text-sm px-2 border py-1 rounded border-gray-300"
-                            type="text"
+                            type={type}
                             placeholder={`Enter ${label}`}
                             required={require}
                         />
